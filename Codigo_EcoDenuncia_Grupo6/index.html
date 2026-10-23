@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoDenúncia | Resíduos Urbanos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">♻</span><div><strong>EcoDenúncia</strong><small>Gestão de resíduos urbanos</small></div></div>
+    <nav><a href="#denunciar">Fazer denúncia</a><a href="#denuncias">Denúncias</a><a href="#coleta">Coleta</a><button class="btn btn-outline" id="adminOpen">Área administrativa</button></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">CIDADE LIMPA, RESPONSABILIDADE DE TODOS</span>
+        <h1>Ajude a cuidar<br>da nossa cidade.</h1>
+        <p>Registre pontos de descarte irregular, acompanhe denúncias e consulte os dias de coleta do seu bairro.</p>
+        <a class="btn btn-primary" href="#denunciar">Registrar uma denúncia <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-label="Ilustração de cidade sustentável">
+        <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
+        <div class="building b1"></div><div class="building b2"></div><div class="building b3"></div>
+        <div class="tree tree1">♣</div><div class="tree tree2">♣</div><div class="recycle">♻</div>
+        <div class="art-caption">Pequenas atitudes<br>transformam espaços.</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><span class="stat-icon">📍</span><div><strong id="totalReports">0</strong><small>Denúncias registradas</small></div></div>
+      <div><span class="stat-icon">🟡</span><div><strong id="openReports">0</strong><small>Em análise</small></div></div>
+      <div><span class="stat-icon">✅</span><div><strong id="resolvedReports">0</strong><small>Resolvidas</small></div></div>
+    </section>
+
+    <section class="section two-col" id="denunciar">
+      <div class="section-intro">
+        <span class="eyebrow">PARTICIPE</span><h2>Encontrou descarte irregular?</h2>
+        <p>Preencha as informações abaixo. Informe um local claro para ajudar a equipe responsável a encontrar o ponto.</p>
+        <div class="notice"><strong>Importante</strong><p>As denúncias deste protótipo ficam salvas apenas neste navegador. Não envie informações pessoais sensíveis.</p></div>
+      </div>
+      <form id="reportForm" class="panel">
+        <h3>Nova denúncia</h3>
+        <label for="reportTitle">Título da ocorrência *</label><input id="reportTitle" required maxlength="90" placeholder="Ex.: Entulho em terreno baldio">
+        <label for="reportCategory">Tipo de resíduo *</label>
+        <select id="reportCategory" required><option value="">Selecione uma opção</option><option>Entulho de construção</option><option>Lixo doméstico</option><option>Móveis e objetos</option><option>Poda e restos vegetais</option><option>Resíduo eletrônico</option><option>Outro</option></select>
+        <label for="reportLocation">Localização / endereço *</label><input id="reportLocation" required maxlength="180" placeholder="Rua, número, bairro ou ponto de referência">
+        <div class="inline-fields"><div><label for="reportNeighborhood">Bairro *</label><input id="reportNeighborhood" required maxlength="80" placeholder="Nome do bairro"></div><div><label for="reportDate">Data observada</label><input id="reportDate" type="date"></div></div>
+        <label for="reportDescription">Descrição</label><textarea id="reportDescription" rows="3" maxlength="600" placeholder="Descreva brevemente a situação"></textarea>
+        <label for="reportPhoto">Foto (opcional)</label><input id="reportPhoto" type="file" accept="image/*">
+        <div class="inline-fields geo-fields"><div><label for="latitude">Latitude</label><input id="latitude" placeholder="Opcional" readonly></div><div><label for="longitude">Longitude</label><input id="longitude" placeholder="Opcional" readonly></div></div>
+        <button class="btn btn-soft" type="button" id="getLocation">◎ Usar minha localização</button>
+        <button class="btn btn-primary btn-full" type="submit">Enviar denúncia</button>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section" id="denuncias">
+      <div class="section-heading"><div><span class="eyebrow">ACOMPANHAMENTO</span><h2>Denúncias recentes</h2></div><div class="filters"><input id="searchReports" placeholder="Buscar por bairro ou título"><select id="statusFilter"><option value="">Todos os status</option><option>Recebida</option><option>Em análise</option><option>Resolvida</option></select></div></div>
+      <div id="reportsList" class="reports-grid"></div>
+      <p id="emptyReports" class="empty-state">Ainda não há denúncias. Seja a primeira pessoa a registrar uma ocorrência.</p>
+    </section>
+
+    <section class="section collection-section" id="coleta">
+      <div><span class="eyebrow">INFORMAÇÃO ÚTIL</span><h2>Calendário de coleta</h2><p>Consulte os dias de coleta cadastrados para cada bairro. Os dados abaixo são exemplos e devem ser atualizados pela administração municipal.</p></div>
+      <div class="panel collection-panel">
+        <div class="collection-row"><span class="day">SEG / QUI</span><div><strong>Centro</strong><small>Coleta domiciliar — manhã</small></div></div>
+        <div class="collection-row"><span class="day">TER / SEX</span><div><strong>Jardim das Flores</strong><small>Coleta domiciliar — manhã</small></div></div>
+        <div class="collection-row"><span class="day">QUA / SÁB</span><div><strong>Nova Esperança</strong><small>Coleta domiciliar — tarde</small></div></div>
+        <small class="muted">Calendário demonstrativo. Confirme os horários oficiais com o serviço municipal.</small>
+      </div>
+    </section>
+  </main>
+  <footer><div class="brand"><span class="brand-icon">♻</span><div><strong>EcoDenúncia</strong><small>Uma cidade melhor começa com a participação de todos.</small></div></div><span>Protótipo acadêmico • São Gonçalo do Amarante/RN</span></footer>
+
+  <div class="modal-backdrop hidden" id="adminModal">
+    <section class="modal panel">
+      <button class="modal-close" id="adminClose" aria-label="Fechar">×</button>
+      <div id="adminLoginView">
+        <span class="eyebrow">ACESSO RESTRITO</span><h2>Área administrativa</h2><p>Entre para gerenciar o status das denúncias deste protótipo.</p>
+        <form id="adminLoginForm"><label for="adminUser">Usuário</label><input id="adminUser" required autocomplete="username" value="admin"><label for="adminPassword">Senha</label><input id="adminPassword" type="password" required autocomplete="current-password" placeholder="Senha demonstrativa"><button class="btn btn-primary btn-full">Entrar</button><p class="muted">Demonstração local: usuário <b>admin</b> e senha <b>admin123</b>.</p><p id="loginMessage" class="form-message"></p></form>
+      </div>
+      <div id="adminDashboard" class="hidden"><span class="eyebrow">PAINEL</span><h2>Gerenciar denúncias</h2><p class="muted">Altere o status e remova registros de demonstração.</p><div id="adminReports"></div><button class="btn btn-outline" id="adminLogout">Sair</button></div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
